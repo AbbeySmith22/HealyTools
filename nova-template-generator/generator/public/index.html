@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- CUSTOMIZE: Change this to your tool name -->
-<title>NOVA Generator Template</title>
+<title>Healy Focus Generator</title>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   /* NOVA BRAND TOKENS — update with your Brand Token Cheatsheet values */
@@ -191,47 +191,46 @@
 
   <div class="header">
     <!-- CUSTOMIZE: Update tag, title, subtitle, credibility -->
-    <div class="tool-tag">Your Brand Name</div>
-    <h1>Your Generator Tool Name</h1>
-    <div class="header-sub">One sentence describing what the user inputs and what ready-to-use output they get back.</div>
-    <div class="credibility">Built by [Your Name] — [Your credibility signal]</div>
+    <div class="tool-tag">High Vibrancy Living</div>
+    <h1>Healy Focus Generator</h1>
+    <div class="header-sub">Find the best focus for your current issue and create more clear, targeted Healy scans.</div>
+    <div class="credibility">Built by Abbey Smith — Experienced Healy Frequency Practitioner & Trainer </div>
   </div>
 
   <div class="body">
 
     <div id="form-section">
-      <div class="section-title">Tell Us What to Generate</div>
+      <div class="section-title">Tell Us What You Want to Focus On/div>
 
       <!-- CUSTOMIZE: Update all input fields for your tool -->
       <!-- Add or remove fields as needed -->
 
       <div class="field-group">
-        <span class="field-label">Primary input label</span>
-        <div class="field-hint">Tell users exactly what to enter here and how specific to be.</div>
+        <span class="field-label">What's happening right now?</span>
+        <div class="field-hint"> — Be specific. Describe the situation or pattern rather than giving one word like "money".</div>
         <input type="text" class="fi" id="input-primary"
-          placeholder="e.g. destination, topic, product name...">
+          placeholder="e.g. health,  life direction, needs ">
       </div>
 
       <div class="two-col">
         <div class="field-group">
-          <span class="field-label">Second input label</span>
-          <div class="field-hint">Hint for this field.</div>
+          <span class="field-label">What keeps happening that you would like to change?</span>
+          <div class="field-hint">Patterns or repetitive issues coming up</div>
           <input type="text" class="fi" id="input-secondary"
-            placeholder="e.g. duration, audience, style...">
+            placeholder="e.g. relationships, anxiety levels, health issues">
         </div>
-        <div class="field-group">
-          <span class="field-label">Third input label</span>
-          <div class="field-hint">Hint for this field.</div>
-          <!-- CUSTOMIZE: Use a select if there are fixed options -->
-          <select class="fi" id="input-style">
-            <option value="">Select an option...</option>
-            <option value="option-1">Option 1</option>
-            <option value="option-2">Option 2</option>
-            <option value="option-3">Option 3</option>
-          </select>
+              <div class="field-group">
+          <span class="field-label">What would you like to experience or do differently instead?</span>
+          <div class="field-hint">Describe what you’d like to feel, choose or do differently — be specific about what would change for you.</div>
+          <input type="text" class="fi" id="input-secondary"
+            placeholder="e.g. trust my decisions, set clearer boundaries, feel calmer, follow through with confidence">
         </div>
-      </div>
-
+                        <div class="field-group">
+          <span class="field-label">Which area is this mainly connected to? </span>
+          <div class="field-hint">Money / Work & Purpose / Relationships / Self-Trust / Boundaries / Confidence & Visibility / Emotional Wellbeing / Other</div>
+          <input type="text" class="fi" id="input-secondary"
+            placeholder="e.g. one of the above">
+</div>
       <div class="field-group">
         <span class="field-label">Optional additional details</span>
         <div class="field-hint">Any other context that helps generate a better output.</div>
@@ -251,9 +250,9 @@
 
     <!-- EMAIL GATE -->
     <div class="email-gate" id="email-gate">
-      <div class="gate-title">Your output is generating.</div>
+      <div class="gate-title">Your Focus is generating.</div>
       <!-- CUSTOMIZE: Update gate copy for your tool -->
-      <div class="gate-sub">Enter your email and your [output name] will be ready in seconds.</div>
+      <div class="gate-sub">Enter your email and your focus will be ready in seconds.</div>
       <div class="gate-row">
         <input type="email" class="gate-input" id="gate-email" placeholder="your@email.com">
         <button class="btn-primary" id="gate-btn" onclick="handleGate()">Generate Mine</button>
@@ -265,13 +264,13 @@
     <div class="loading" id="loading">
       <div class="spinner"></div>
       <!-- CUSTOMIZE: Update loading text -->
-      <div class="loading-text">Generating your [output name]...</div>
+      <div class="loading-text">Generating your Healy Focus...</div>
       <div class="loading-sub">This takes about 10 to 15 seconds.</div>
     </div>
 
     <!-- RESULTS -->
     <div class="results" id="results">
-      <div class="section-title">Your Generated Output</div>
+      <div class="section-title">Your Healy Focus</div>
 
       <div class="output-box" id="output-box"></div>
 
@@ -285,9 +284,9 @@
   </div>
 
   <div class="footer">
-    <!-- CUSTOMIZE: Update brand name and URL -->
-    <div class="footer-brand">YOUR BRAND</div>
-    <div class="footer-url">yourwebsite.com</div>
+    <!-- CUSTOMIZE: High Vibrancy Living -->
+    <div class="footer-brand">High Vibrancy Living </div>
+    <div class="footer-url">highvibrancyliving.com</div>
   </div>
 
 </div>
