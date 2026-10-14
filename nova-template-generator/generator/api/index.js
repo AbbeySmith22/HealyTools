@@ -235,7 +235,6 @@ Return only the formatted output.
 
   } catch (err) {
     console.error('Healy Generator API error:', err);
-
     return res.status(500).json({
       error: 'AI generation failed. Check the Vercel function logs.'
     });
