@@ -200,8 +200,7 @@
   <div class="body">
 
     <div id="form-section">
-      <div class="section-title">Tell Us What You Want to Focus On/div>
-
+<div class="section-title">Tell Us What You Want to Focus On</div>
       <!-- CUSTOMIZE: Update all input fields for your tool -->
       <!-- Add or remove fields as needed -->
 
@@ -222,7 +221,7 @@
               <div class="field-group">
           <span class="field-label">What would you like to experience or do differently instead?</span>
           <div class="field-hint">Describe what you’d like to feel, choose or do differently — be specific about what would change for you.</div>
-          <input type="text" class="fi" id="input-desired""
+          <input type="text" class="fi" id="input-desired"
             placeholder="e.g. trust my decisions, set clearer boundaries, feel calmer, follow through with confidence">
         </div>
                         <div class="field-group">
@@ -230,6 +229,7 @@
           <div class="field-hint">Money / Work & Purpose / Relationships / Self-Trust / Boundaries / Confidence & Visibility / Emotional Wellbeing / Other</div>
           <input type="text" class="fi" id="input-style"
             placeholder="e.g. one of the above">
+                          </div> <!-- closes the two-col container -->
 </div>
       <div class="field-group">
         <span class="field-label">Optional additional details</span>
@@ -238,48 +238,49 @@
           placeholder="Any additional details, preferences, or constraints..."></textarea>
       </div>
 
-      <div class="submit-wrap">
-        <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
-          Generate →
-        </button>
-      </div>
-      <div class="error-box" id="error-box">
-        Please fill in the required fields before generating.
-      </div>
-    </div>
+     <div class="submit-wrap">
+  <button class="btn-primary" id="submit-btn" onclick="handleSubmit()">
+    Generate →
+  </button>
+</div>
 
-    <!-- EMAIL GATE -->
-    <div class="email-gate" id="email-gate">
-      <div class="gate-title">Your Focus is generating.</div>
-      <!-- CUSTOMIZE: Update gate copy for your tool -->
-      <div class="gate-sub">Enter your email and your focus will be ready in seconds.</div>
-      <div class="gate-row">
-        <input type="email" class="gate-input" id="gate-email" placeholder="your@email.com">
-        <button class="btn-primary" id="gate-btn" onclick="handleGate()">Generate Mine</button>
-      </div>
-      <div class="error-box" id="gate-error">Please enter a valid email address.</div>
-    </div>
+<div class="error-box" id="error-box">
+  Please fill in the required fields before generating.
+</div>
 
-    <!-- LOADING -->
-    <div class="loading" id="loading">
-      <div class="spinner"></div>
-      <!-- CUSTOMIZE: Update loading text -->
-      <div class="loading-text">Generating your Healy Focus...</div>
-      <div class="loading-sub">This takes about 10 to 15 seconds.</div>
-    </div>
+</div> <!-- CLOSES form-section -->
 
-    <!-- RESULTS -->
-    <div class="results" id="results">
-      <div class="section-title">Your Healy Focus</div>
+<!-- EMAIL GATE -->
+<div class="email-gate" id="email-gate">
+  <div class="gate-title">Your Focus is generating.</div>
+  <div class="gate-sub">Enter your email and your focus will be ready in seconds.</div>
+  <div class="gate-row">
+    <input type="email" class="gate-input" id="gate-email" placeholder="your@email.com">
+    <button class="btn-primary" id="gate-btn" onclick="handleGate()">Generate Mine</button>
+  </div>
+  <div class="error-box" id="gate-error">
+    Please enter a valid email address.
+  </div>
+</div>
 
-      <div class="output-box" id="output-box"></div>
+<!-- LOADING -->
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+  <div class="loading-text">Generating your Healy Focus...</div>
+  <div class="loading-sub">This takes about 10 to 15 seconds.</div>
+</div>
 
-      <div class="output-actions">
-        <button class="action-btn" onclick="copyOutput()">Copy to Clipboard</button>
-        <button class="generate-again-btn" onclick="generateAgain()">Generate Another Version</button>
-        <button class="reset-btn" onclick="resetTool()">Start Over</button>
-      </div>
-    </div>
+<!-- RESULTS -->
+<div class="results" id="results">
+  <div class="section-title">Your Healy Focus</div>
+  <div class="output-box" id="output-box"></div>
+
+  <div class="output-actions">
+    <button class="action-btn" onclick="copyOutput()">Copy to Clipboard</button>
+    <button class="generate-again-btn" onclick="generateAgain()">Generate Another Version</button>
+    <button class="reset-btn" onclick="resetTool()">Start Over</button>
+  </div>
+</div>
 
   </div>
 
