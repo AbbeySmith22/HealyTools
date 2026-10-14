@@ -209,8 +209,25 @@ Return only the formatted output.
     }
 
     // For plain text output, return as a string
-    const output = data.content[0].text.trim();
-    return res.status(200).json({ output });
+    
+const output = data.content
+  ?.filter(item => item.type === 'text')
+  .map(item => item.text)
+  .join('\n')
+  .trim();
+
+if (!output) {
+  console.error('Claude returned no text:', {
+    stop_reason: data.stop_reason,
+    content_types: data.content?.map(item => item.type)
+  });
+
+  return res.status(502).json({
+    error: 'The AI returned an empty response. Please try again.'
+  });
+}
+
+return res.status(200).json({ output });
 
     // UNCOMMENT BELOW if using JSON format instead:
     // const raw = data.content[0].text.trim();
@@ -218,9 +235,13 @@ Return only the formatted output.
     // const result = JSON.parse(clean);
     // return res.status(200).json(result);
 
-  } catch (err) {
-    return res.status(500).json({
-      error: 'Something went wrong. Please try again.'
-    });
+  }
+} catch (err) {
+  console.error('Healy Generator API error:', err);
+
+  return res.status(500).json({
+    error: 'AI generation failed. Check the Vercel function logs.'
+  });
+}
   }
 }
