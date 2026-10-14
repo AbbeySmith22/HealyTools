@@ -222,13 +222,13 @@
               <div class="field-group">
           <span class="field-label">What would you like to experience or do differently instead?</span>
           <div class="field-hint">Describe what you’d like to feel, choose or do differently — be specific about what would change for you.</div>
-          <input type="text" class="fi" id="input-secondary"
+          <input type="text" class="fi" id="input-desired""
             placeholder="e.g. trust my decisions, set clearer boundaries, feel calmer, follow through with confidence">
         </div>
                         <div class="field-group">
           <span class="field-label">Which area is this mainly connected to? </span>
           <div class="field-hint">Money / Work & Purpose / Relationships / Self-Trust / Boundaries / Confidence & Visibility / Emotional Wellbeing / Other</div>
-          <input type="text" class="fi" id="input-secondary"
+          <input type="text" class="fi" id="input-style"
             placeholder="e.g. one of the above">
 </div>
       <div class="field-group">
@@ -296,24 +296,31 @@ let pendingInput = null;
 
 async function handleSubmit() {
   // CUSTOMIZE: Update field IDs to match your inputs
-  const primary = document.getElementById('input-primary').value.trim();
-  const secondary = document.getElementById('input-secondary').value.trim();
-  const style = document.getElementById('input-style').value;
-  const details = document.getElementById('input-details').value.trim();
-  const errorBox = document.getElementById('error-box');
+ const primary = document.getElementById('input-primary').value.trim();
+const secondary = document.getElementById('input-secondary').value.trim();
+const desired = document.getElementById('input-desired').value.trim();
+const style = document.getElementById('input-style').value.trim();
+const details = document.getElementById('input-details').value.trim();
 
   errorBox.classList.remove('show');
 
-  // CUSTOMIZE: Update required field validation
-  if (!primary) {
-    errorBox.textContent = 'Please fill in the required field before generating.';
-    errorBox.classList.add('show');
-    return;
-  }
+  // Build the Healy Focus Generator input
+  pendingInput = `CURRENT SITUATION:
+${primary}
 
-  // CUSTOMIZE: Build the user input string to match your system prompt
-  pendingInput = `Primary: ${primary}${secondary ? '\nSecondary: ' + secondary : ''}${style ? '\nStyle: ' + style : ''}${details ? '\nDetails: ' + details : ''}`;
+REPEATED PATTERN:
+${secondary || 'Not provided'}
 
+DESIRED EXPERIENCE OR CHANGE:
+${desired || 'Not provided'}
+
+MAIN LIFE AREA:
+${style || 'Not provided'}
+
+ADDITIONAL DETAILS:
+${details || 'None provided'}`;
+
+  // Hide form and show email gate
   document.getElementById('form-section').style.display = 'none';
   document.getElementById('email-gate').classList.add('show');
 }
