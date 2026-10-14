@@ -352,6 +352,7 @@ async function handleGate() {
     if (!response.ok) throw new Error(result.error || 'Error');
     displayResults(result);
   } catch (err) {
+    console.error('Healy Focus Generator error:', err);
     document.getElementById('loading').classList.remove('show');
     document.getElementById('form-section').style.display = 'block';
     const eb = document.getElementById('error-box');
@@ -402,7 +403,7 @@ async function generateAgain() {
 function resetTool() {
   document.getElementById('results').classList.remove('show');
   document.getElementById('form-section').style.display = 'block';
-  ['input-primary','input-secondary','input-style','input-details'].forEach(id => {
+  ['input-primary','input-secondary','input-desired','input-style','input-details'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = '';
   });
