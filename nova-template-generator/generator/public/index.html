@@ -295,12 +295,13 @@
 let pendingInput = null;
 
 async function handleSubmit() {
-  // CUSTOMIZE: Update field IDs to match your inputs
- const primary = document.getElementById('input-primary').value.trim();
-const secondary = document.getElementById('input-secondary').value.trim();
-const desired = document.getElementById('input-desired').value.trim();
-const style = document.getElementById('input-style').value.trim();
-const details = document.getElementById('input-details').value.trim();
+  const primary = document.getElementById('input-primary').value.trim();
+  const secondary = document.getElementById('input-secondary').value.trim();
+  const desired = document.getElementById('input-desired').value.trim();
+  const style = document.getElementById('input-style').value.trim();
+  const details = document.getElementById('input-details').value.trim();
+
+  const errorBox = document.getElementById('error-box');
 
   errorBox.classList.remove('show');
 
