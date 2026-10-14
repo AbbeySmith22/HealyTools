@@ -210,38 +210,34 @@ Return only the formatted output.
 
     // For plain text output, return as a string
     
-const output = data.content
-  ?.filter(item => item.type === 'text')
-  .map(item => item.text)
-  .join('\n')
-  .trim();
 
-if (!output) {
-  console.error('Claude returned no text:', {
-    stop_reason: data.stop_reason,
-    content_types: data.content?.map(item => item.type)
-  });
+    // Extract the AI-generated text
+    const output = data.content
+      ?.filter(item => item.type === 'text')
+      .map(item => item.text)
+      .join('\n')
+      .trim();
 
-  return res.status(502).json({
-    error: 'The AI returned an empty response. Please try again.'
-  });
-}
+    // Check for empty responses
+    if (!output) {
+      console.error('Claude returned no text:', {
+        stop_reason: data.stop_reason,
+        content_types: data.content?.map(item => item.type)
+      });
 
-return res.status(200).json({ output });
+      return res.status(502).json({
+        error: 'The AI returned an empty response. Please try again.'
+      });
+    }
 
-    // UNCOMMENT BELOW if using JSON format instead:
-    // const raw = data.content[0].text.trim();
-    // const clean = raw.replace(/```json|```/g, '').trim();
-    // const result = JSON.parse(clean);
-    // return res.status(200).json(result);
+    // Return the generated Healy Focus
+    return res.status(200).json({ output });
 
+  } catch (err) {
+    console.error('Healy Generator API error:', err);
+
+    return res.status(500).json({
+      error: 'AI generation failed. Check the Vercel function logs.'
+    });
   }
-} catch (err) {
-  console.error('Healy Generator API error:', err);
-
-  return res.status(500).json({
-    error: 'AI generation failed. Check the Vercel function logs.'
-  });
-}
-  }
-}
+};
