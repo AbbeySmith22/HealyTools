@@ -347,8 +347,8 @@ async function handleGate() {
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userInput: pendingInput })
-    });
+body: JSON.stringify({ userInput: pendingInput, email: email })
+      });
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || 'Error');
     displayResults(result);
