@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   }
 
   // CUSTOMIZE: match field names to what your frontend sends
-  const { userInput } = req.body;
+ const { userInput, email } = req.body;
 
   if (!userInput) {
     return res.status(400).json({ error: 'Input is required' });
@@ -295,8 +295,13 @@ End with a short, real, encouraging comment. No cheesy motivational speeches.
       });
     }
 
-    // Return the generated Healy Focus
-    return res.status(200).json({ output });
+    // Capture email without interrupting the generator
+if (email) {
+  await captureEmail(email);
+}
+
+// Return the generated Healy Focus
+return res.status(200).json({ output });
 
   } catch (err) {
     console.error('Healy Generator API error:', err);
@@ -305,3 +310,70 @@ End with a short, real, encouraging comment. No cheesy motivational speeches.
     });
   }
 };
+
+async function captureEmail(email) {
+  if (!process.env.SYSTEME_API_KEY) {
+    console.error('SYSTEME_API_KEY is missing');
+    return;
+  }
+
+  try {
+    // Create the contact
+    const response = await fetch(
+      'https://api.systeme.io/api/contacts',
+      {
+        method: 'POST',
+        headers: {
+          'X-API-Key': process.env.SYSTEME_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email })
+      }
+    );
+
+    if (!response.ok) {
+      console.error(
+        'Systeme.io contact error:',
+        response.status,
+        await response.text()
+      );
+      return;
+    }
+
+    const contact = await response.json();
+
+    if (!contact.id) {
+      console.error('Contact ID missing');
+      return;
+    }
+
+    // Add the Focus Generator tag
+    const tagResponse = await fetch(
+      `https://api.systeme.io/api/contacts/${contact.id}/tags`,
+      {
+        method: 'POST',
+        headers: {
+          'X-API-Key': process.env.SYSTEME_API_KEY,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          tagId: 2233099
+        })
+      }
+    );
+
+    if (!tagResponse.ok) {
+      console.error(
+        'Systeme.io tag error:',
+        tagResponse.status,
+        await tagResponse.text()
+      );
+      return;
+    }
+
+    console.log('Focus Generator contact tagged');
+
+  } catch (err) {
+    console.error('Systeme.io error:', err);
+  }
+}
