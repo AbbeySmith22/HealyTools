@@ -295,9 +295,14 @@ End with a short, real, encouraging comment. No cheesy motivational speeches.
       });
     }
 
-    // Capture email without interrupting the generator
+   // Capture email without interrupting the generator
+console.log('Email received:', Boolean(email));
+
 if (email) {
+  console.log('Attempting Systeme.io capture');
   await captureEmail(email);
+} else {
+  console.error('No email received from frontend');
 }
 
 // Return the generated Healy Focus
