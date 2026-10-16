@@ -185,22 +185,45 @@
   }
   .error-box.show { display: block; }
 
-  .footer {
-    background: var(--dark); padding: 14px 44px;
-    display: flex; justify-content: space-between; align-items: center; margin-top: 28px;
-  }
-  .footer-brand { font-family: var(--heading-font); font-weight: 900; font-size: 14px; color: var(--border); letter-spacing: 1px; }
-  .footer-url { font-size: 12px; color: var(--mid-bg); opacity: 0.6; }
 
-  @media (max-width: 600px) {
-    .body { padding: 24px 20px 32px; }
-    .header { padding: 28px 20px 24px; }
-    .footer { padding: 14px 20px; flex-direction: column; gap: 6px; }
-    .two-col, .three-col { grid-template-columns: 1fr; }
-    .gate-row { flex-direction: column; }
-    .output-actions { flex-direction: column; }
+.footer {
+  background: var(--dark); padding: 14px 44px;
+  display: flex; justify-content: space-between;
+  align-items: center; margin-top: 28px;
+}
+.footer-brand {
+  font-family: var(--heading-font);
+  font-weight: 900; font-size: 14px;
+  color: var(--border); letter-spacing: 1px;
+}
+.footer-url {
+  font-size: 12px; color: var(--mid-bg);
+  opacity: 0.6;
+}
+
+/* MOBILE STYLING */
+@media (max-width: 600px) {
+  .body { padding: 24px 20px 32px; }
+  .header { padding: 28px 20px 24px; }
+  .footer {
+    padding: 14px 20px;
+    flex-direction: column;
+    gap: 6px;
   }
+  .two-col, .three-col { grid-template-columns: 1fr; }
+  .gate-row { flex-direction: column; }
+  .output-actions { flex-direction: column; }
+
+  /* SMALLER LOGO ON MOBILE */
+  .header img[alt="High Vibrancy Living"] {
+    width: 65px !important;
+    max-width: 65px !important;
+    top: 15px !important;
+    right: 15px !important;
+  }
+}
 </style>
+
 </head>
 <body>
 <div class="page">
